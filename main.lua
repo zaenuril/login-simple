@@ -2,6 +2,7 @@
 local data = dofile("data.lua")
 
 local function main()
+
     -- TO-DO tampilkan menu pilihan
     print("[=====]     SELAMAT DATANG DI TEMPEST LOGIN SYSTEM    [=====]")
     print("[===========================================================]")
@@ -12,35 +13,67 @@ local function main()
     print("[===========================================================]")
 
     io.write("choose your choice: ")
+
     local user_choice = io.read("*n\n")
     _ = io.read("*l")
+
+        local logged_in = false
+        local attempt = 0
+    while not logged_in and attempt < 3 do
+
     -- TO-DO tampilkan menu login user
     if user_choice == 1 then
+
+        
     print("\n\n[=====] LOGIN [=====]\n")
+        
+        io.write("Username: ")
+        local input_user = io.read()
+        io.write("Password: ")
+        local input_pass = io.read()
+        io.write("Role: ")
+        local input_role = io.read()
+        
     
-    io.write("Username: ")
-    local input_user = io.read()
-    io.write("Password: ")
-    local input_pass = io.read()
-    io.write("Role: ")
-    local input_role = io.read()
-    
+    -- menampilkan halaman login untuk user 
     for _, userdata in pairs(data) do
         -- print("username: " .. userdata.users .. " password: " .. userdata.pass .. " role: " ..userdata.role)
         if userdata.users == input_user and userdata.pass == input_pass and userdata.role == input_role then
-            print("logged on! welcome " .. userdata.users .. " your role is " .. userdata.role)
+            print("\n\n\n\nlogged on! welcome " .. userdata.users .. " your role is " .. userdata.role .. "\n")
+            print("[=====]     SELAMAT DATANG DI TEMPEST LOGIN SYSTEM    [=====]")
+            logged_in = true
         end
-end
+
+        -- cek kalau user salah memasukan username
+        if userdata.users ~= input_user and userdata.pass == input_pass and userdata.role == input_role then
+            print("\n\n\n\nplease input correct username")
+        end
+
+        if userdata.users == input_user and userdata.pass ~= input_pass and userdata.role == input_role then
+        -- -- cek kalau user salah memasukan password
+        --  local converted_pass = tonumber(input_pass) -- converting 'input_pass' to a number
+        -- if converted_pass ~= nil then
+        attempt = attempt + 1
+
+            print("please input correct password!")
+        end
+                if attempt == 3 then
+            print("you've input max attempt, program will be terminated!")
+        end
+    end
+
+        -- end
+    -- end
+    
 elseif user_choice == 2 then
     print("menampilkan menu register")
 else
-    print("berhasil keluar")
+            print("berhasil keluar")
+            -- TO-DO jika user gagal login
+        end
+
+
 end
-
 end
-
-
-
-    -- TO-DO jika user gagal login
 
 main()

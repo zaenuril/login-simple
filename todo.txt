@@ -1,14 +1,15 @@
 -- the plan
-user disuguhkan menu
-user pilih mau login atau register
+    [+] user disuguhkan menu
+    [+] user pilih mau login atau register
 
 -- user pilih login
-    user memasukan username dan password
-    kalo salah gagal
+    [+] user memasukan username dan password
+    [+] kalo salah gagal
     salah 3x "acces denied"
 
 -- user pilih register
     user tulis username dan password
     ada notif yakin/tidak
 
-    
+[+] bikin login attempt jangan sampe 3
+[+] fixing loop login

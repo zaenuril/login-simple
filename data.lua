@@ -6,7 +6,7 @@ return {
     },
     {
         users = "rimuru",
-        pass = "buntedskuy",
+        pass = "pakowok",
         role = "admin"
     },
     {
